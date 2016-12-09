@@ -68,9 +68,9 @@ public class MainPhysics {
             wallBox[wallBr+i+1] = new WallBx();
             wallBox[wallBr+i+1].startX = wallBox[wallBr+i].endX;
             wallBox[wallBr+i+1].startY = wallBox[wallBr+i].endY;
-            Log.e("Step", String.valueOf(wallBox[wallBr+i].endY));
+            Log.e("SD", String.valueOf(wallBr));
         }
-        wallBr+=Math.abs(diff);
+        wallBr+=Math.abs(diff)+1;
     }
 
     public void onMoveFrame() {
@@ -177,7 +177,7 @@ public class MainPhysics {
                         sZ=(wallBox[i].startZ - camZ)/(camZ),
                         eZ=(wallBox[i].endZ - camZ)/(camZ);
 
-                if(sX>sY && eX<eY && sX>sZ && eX<eZ){
+                if(wallBox[i].startX == Math.round(touchPos[0] / 2)){
                     render.wall.texList[i] = -1;
                 }
             }
@@ -194,7 +194,11 @@ public class MainPhysics {
                         sZ=(wallBox[i].startZ - camZ)/(camZ),
                         eZ=(wallBox[i].endZ - camZ)/(camZ);
 
-                if(sX>sY && eX<eY && sX>sZ && eX<eZ && render.wall.texList[i]!=-1){
+//                if(sX>sY && eX<eY && sX>sZ && eX<eZ && render.wall.texList[i]!=-1){
+//                    render.wall.texList[i] = render.paitTex;
+//                }
+                Log.e("StartTuuch", String.valueOf(Math.round(touchPos[0] / 2)) + " " + String.valueOf(wallBox[i].startX));
+                if(wallBox[i].startX == Math.round(touchPos[0] / 2) && render.wall.texList[i]!=-1){
                     render.wall.texList[i] = render.paitTex;
                 }
             }

@@ -224,7 +224,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 
     public void setWall(){
         wall.changeOffset();
-        //mainPhysics.setMat();
+        mainPhysics.setMat();
+        Log.e("Br", String.valueOf(wall.br));
     }
 
 
